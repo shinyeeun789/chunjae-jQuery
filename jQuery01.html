@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> jQuery </title>
+
+    <script src="code.jquery.com_jquery-1.10.0.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.10.0.js"></script>  ==> CDN 방식 -->
+    <script>
+        $(document).ready(function() {      // 문서가 모두 로딩되기를 기다렸다가
+            $("#kim").text("김이름");
+        });
+        $(document).ready(function() {
+            ani();
+        });
+        function ani() {                    // 자바스크립트
+            $("#park").html("<span style='color:red'> 천재 박이름 </span>");
+        }
+    </script>
+</head>
+<body>
+    <h2 id="kim"></h2>
+    <h2 id="lee"></h2>
+    <script>
+        $(function() {                       // 곧 바로 실행
+            // 스크립트는 위에서부터 순서대로 출력되기 때문에 h2 태그가 생성된 후 script 작성해주어야 함
+            $("#lee").text("이이름 천재");
+        });
+    </script>
+    <h2 id="park"></h2>
+    <div>
+        <ul class="lst">
+            <li> 아이템1 </li>
+            <li> 아이템2 </li>
+            <li> 아이템3 </li>
+            <li> 아이템4 </li>
+            <li> 아이템5 </li>
+        </ul>
+        <button id="btn1"> 요소 추가 </button>
+    </div>
+    <script>
+        $(function() {
+            $(".lst li").click(function() {
+                alert($(this).text);
+            });
+
+            var sw = true;
+            $("#btn1").click(function() {
+                if(sw) {
+                    $("#park").text("집 가고 싶다");
+                } else {
+                    $("#park").html("<span style='color:red'> 천재 박이름 </span>");
+                }
+                sw = !sw;               // 스위치 개념
+                
+                var len = $(".lst li").length + 1;
+                $(".lst").append("<li> 아이템" + len + "</li>");
+                $(".lst li").css("color", "black");
+                $(".lst li:last-child").css("color", "blue");
+            });
+        });
+    </script>
+</body>
+</html>
