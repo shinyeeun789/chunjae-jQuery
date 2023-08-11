@@ -18,8 +18,10 @@
     <script>
     $(document).ready(function(){
         //td의 3의 배수 번째는 글자색을 빨강, 글자 두께를 900으로 변경 - nth-child(n)
+        $("td:nth-child(3n)").css({"color":"red", "font-weight":"900"});
         
         //td의 네 번째 요소에 배경색을 핑크색, 글자색을 빨강으로 변경 - eq(index)
+        $("td:eq(4)").css({"background-color":"pink", "color":"red"});
         
     });    
     </script>

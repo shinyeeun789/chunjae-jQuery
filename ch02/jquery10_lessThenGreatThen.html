@@ -23,9 +23,10 @@
     $(document).ready(function(){
         //eq(index), lt(index), gt(index)
         //td의 세 번째 후 요소에 글자색을 빨강으로 변경
+        $("td:gt(2)").css("color", "red");
         
         //td의 다섯 번째 전 요소에 textstyle 클래스를 부여
-        
+        $("td:lt(4)").addClass("textstyle");
     });    
     </script>
 </body>
