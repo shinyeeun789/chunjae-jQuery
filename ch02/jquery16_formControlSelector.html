@@ -40,8 +40,7 @@
         var pass = "no";
         $(document).ready(function(){
             //아이디, 이름, 암호, 암호확인을 입력하고, #regBtn을 누르면
-            //데이터의 유효성을 검사하도록 하고, 그 데이터를 ajaxJoin.do로
-            //비동기방식으로 보내도록 하시오.
+            //데이터의 유효성을 검사
             $("#regBtn").click(function() {
                 $(":text, :password").each(function() {
                     if($(this).val() == "") {
@@ -61,6 +60,7 @@
                 confirm();
             });
 
+            // 그 데이터를 ajaxJoin.do로 비동기방식으로 보내도록 하시오.
             function confirm() {
                 if(pass == "yes") {
                     source = { "id":$("#userId").val(), "pw":$("#pwd").val(), "name":$("#userName").val() };
@@ -78,6 +78,7 @@
                 }
             }
 
+            // 이름 입력칸 선택하면 입력칸 안의 내용이 사라지도록 만들어주는 코드
             $("#userName").click(function() {
                 $(this).val("");
             });
