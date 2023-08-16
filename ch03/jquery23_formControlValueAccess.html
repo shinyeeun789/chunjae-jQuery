@@ -25,11 +25,34 @@
     <script>
     $(document).ready(function(){
         //아이디가 reset 인 버튼을 클릭하면, 아이디가 m_id 인 요소의 입력값을 비우고,
+        $("#reset").click(function() {
+            $("#m_id").val("");
+        });
         
         //아이디가 submit 인 버튼을 클릭하면, 값이 비어 있는지 검증을 하고, 값이 있는 경우 그 값을 아이디가 console 인 곳에 텍스트로 출력
-        
+        $("#submit").click(function() {
+            var data = $("#m_id").val();
+            if(data == "") {
+                alert("값을 입력해주세요");
+                return false;
+            } else {
+                $("#console").text(data);
+            }
+        });
     });    
 
+
+    // !! setter !!                !! getter !!
+    // attr("태그속성", "값")       attr("태그속성")
+    // removeAttr("태그속성")
+    // css("style속성", "값")       css("style속성")
+    // addClass("클래스명")
+    // removeClass("클래스명")
+    // toggleClass("클래스명")
+    // hasClass("클래스명")
+    // val("값")                    val()
+    // text("문자열로된값")          text()
+    // html("태그를포함한값")        html()
     </script>
 </body>
 </html>

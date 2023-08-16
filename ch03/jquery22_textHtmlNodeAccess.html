@@ -26,9 +26,10 @@
     </section><br><hr><br>
     <script>
     $(document).ready(function(){
-        
         //p 요소를 클릭하면, 클릭된 요소의 태그를 포함하여 아이디가 console인 곳에 텍스트 형태로 출력
-        
+        $("p").click(function() {
+            $("#console").html($(this).html());
+        });
     });    
     </script>
 </body>
