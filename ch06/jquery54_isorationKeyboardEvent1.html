@@ -17,7 +17,26 @@
     <script>
     $(document).ready(function(){
         //아이디가 msgBox인 요소에 글자를 입력하면, 입력된 글자수를 카운트하여 80글자를 기준으로 입력가능한(남은) 글자수를 h2요소에 출력하고, 만약, 초과하여 입력하면, msgBox의 글자색은 빨강으로 하고 비활성화되도록 하고, 초과하지 않으면, 파랑으로 글자색을 표시하며, 아이디가 btn1인 요소를 클릭하면, msgBox를 초기화하도록 하시오.
+        $("#msgBox").keyup(function() {     // keyup : 뗄 때, keydown : 누를 때, keypress : 눌렀다 뗄 때
+            var len = $("#msgBox").val().length;
+            var remain = 80 - len;
+            $("#remain").text(remain);
 
+            if(remain >= 0) {
+                $("#remain").css("color", "blue");
+            } else {
+                $("#remain").css("color", "red");
+                $(this).css("color", "red");
+                $(this).attr("disabled", "true");                               // disable은 한 번 추가하면 삭제할 수 없음(removeAttr 해도 true만 사라지고 disabled는 사라지지 않기 때문에)
+                $("#status").text(Math.abs(remain)+"글자를 초과하였습니다.");
+            }
+        });
+
+        $("#btn1").click(function() {
+            $("#msgBox").remove();
+            $("#remain").after("<textarea id='msgBox' cols='40' rows='8'></textarea>");
+            $("#remain").text(80).css("color", "black");
+        });
     });
     </script>
 </head>
@@ -27,7 +46,7 @@
         <article class="data">
             <div>
                 남은 글자수
-                <h2>80</h2>
+                <h2 id="remain">80</h2>
                 <textarea id="msgBox" cols="40" rows="8"></textarea>
             </div>
             <div id="status"></div><button id="btn1">초기화</button>
