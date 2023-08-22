@@ -35,17 +35,39 @@
     </style>
     <script>
     $(document).ready(function(){
+        $(".img_box a").each(function(index) {
+            $(this).find(".num").text(index + 1);
+        });
+
         //아이디가 num_box인 요소에 이미지 요소의 개수 만큼 span 버튼 요소를 추가 하시오.
+        $(".img_box a").each(function(index) {
+            $("#num_box").append("<span>" + (index + 1) + "</span>");
+        });
+       
+        //왼쪽 버튼을 누르면, 한 이미지씩 왼쪽으로 슬라이딩 될 수 있도록 하되, 마지막 이미지에서 더 이상 왼쪽으로 슬라이딩 되지 않도록 하시오.
+        var wd = $("#visual").width();
+        var len = $(".img_box a").length;
+        $("#btn_box .left").click(function() {
+            var ml = parseInt($(".img_box").css("margin-left"));                                    // 뒤에 딸려오는 px을 없애주는 parseInt
+            if (ml > (wd * (len - 1)) * -1) {
+                $(".img_box").not(":animated").animate({"margin-left":"-=" + wd +"px"}, 500);       // 애니메이션이 진행 중이지 않을 때만 애니메이션 실행됨
+            }
+        });
 
+        //오른쪽 버튼을 누르면, 한 이미지씩 오른쪽으로 슬라이딩 될 수 있도록 하되, 첫 번째 이미지에서 더 이상 오른쪽으로 슬라이딩 되지 않도록 하시오.
+        $("#btn_box .right").click(function() {
+            var ml = parseInt($(".img_box").css("margin-left"));                                    // 뒤에 딸려오는 px을 없애주는 parseInt
+            if(ml < 0) {
+                $(".img_box").not(":animated").animate({"margin-left":"+=" + wd +"px"}, 500);
+            }
+        });
 
-       //왼쪽 버튼을 누르면, 한 이미지씩 왼쪽으로 슬라이딩 될 수 있도록 하되, 마지막 이미지에서 더 이상 왼쪽으로 슬라이딩 되지 않도록 하시오.
-
-
-       //오른쪽 버튼을 누르면, 한 이미지씩 오른쪽으로 슬라이딩 될 수 있도록 하되, 첫 번째 이미지에서 더 이상 오른쪽으로 슬라이딩 되지 않도록 하시오.
-
-
-       //새롭게 추가된 번호 버튼을 클릭하면, 해당 이미지로 슬라이딩 될 수 있도록 하시오.
-
+        //새롭게 추가된 번호 버튼을 클릭하면, 해당 이미지로 슬라이딩 될 수 있도록 하시오.
+        $("#num_box span").click(function() {
+            var idx = $(this).index();                                                              // 눌려진 버튼의 인덱스 구하기
+            var mlt = wd * idx * -1;
+            $(".img_box").not(":animated").animate({"margin-left": mlt +"px"}, 500);
+        });
     });
     </script>
 </head>
@@ -57,19 +79,19 @@
             <section id="visual">
                 <div class="img_box">
                     <a href="">
-                        <img src="dy1.jpg" alt="">
+                        <img src="../data/dy1.jpg" alt="">
                         <span class="num"></span>
                     </a>
                     <a href="">
-                        <img src="dy2.jpg" alt="">
+                        <img src="../data/dy2.jpg" alt="">
                         <span class="num"></span>
                     </a>
                     <a href="">
-                        <img src="dy3.jpg" alt="">
+                        <img src="../data/dy3.jpg" alt="">
                         <span class="num"></span>
                     </a>
                     <a href="">
-                        <img src="im0.jpg" alt="">
+                        <img src="../data/im0.jpg" alt="">
                         <span class="num"></span>
                     </a>
                 </div>

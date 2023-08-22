@@ -25,15 +25,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script>
     $(document).ready(function(){
-        //가속 감속 효과 모음 : linear swing easeInQuad easeOutQuad easeInOutQuad easeInCubic easeOutCubic easeInOutCubic easeInQuart easeOutQuart easeInOutQuart easeInQuint easeOutQuint easeInOutQuint easeInSine easeOutSine easeInOutSine easeInExpo easeOutExpo easeInOutExpo easeInCirc easeOutCirc easeInOutCirc easeInElastic easeOutElastic easeInOutElastic easeInBack easeOutBack easeInOutBack easeInBounce easeOutBounce easeInOutBounce
+        //가속 감속 효과 모음 : linear swing easeInQuad easeOutQuad easeInOutQuad easeInCubic easeOutCubic easeInOutCubic easeInQuart easeOutQuart easeInOutQuart easeInQuint easeOutQuint easeInOutQuint easeInSine easeOutSine easeInOutSine easeInExpo easeOutExpo easeInOutExpo easeInCirc easeOutCirc easeInOutCirc easeInElastic(점점 빨라지는 가속) easeOutElastic(점점 느려지는 감속) easeInOutElastic easeInBack easeOutBack easeInOutBack easeInBounce easeOutBounce easeInOutBounce
 
         //아이디가 btn1인 버튼을 클릭하면, .lst 내부의 li 요소를 서서히 보여지는 효과를 적용
+        $("#btn1").click(function() {
+            $(".lst li").each(function(index) {
+                $(this).delay(index*500).fadeIn(1000, "easeInCirc");
+                $(".txt").text("리스트 박스가 보여지고 있습니다.");
+            });
+        });
 
         //아이디가 btn2인 버튼을 클릭하면, .lst 내부의 li 요소를 서서히 사라지는 효과를 적용
+        $("#btn2").click(function() {
+            $(".lst li").each(function(index) {
+                $(this).delay(index*500).fadeOut(1000, "easeOutExpo");
+                $(".txt").text("리스트 박스가 사라지고 있습니다.");
 
+            });
+        });
 
         //아이디가 btn3인 버튼을 클릭하면, .lst 내부의 li 요소를 교대로 서서히 보이고, 서서히 사라지는 효과를 적용
-
+        $("#btn3").click(function() {
+            $(".lst li").fadeToggle(2000);
+        });
     });
     </script>
 </head>
@@ -49,9 +63,9 @@
                 <button id="btn3">토글 버튼</button>
             </div>
             <ul class="lst">
-                <li><img src="item1.png" alt=""></li>
-                <li><img src="item2.png" alt=""></li>
-                <li><img src="item3.png" alt=""></li>
+                <li><img src="../data/item1.png" alt=""></li>
+                <li><img src="../data/item2.png" alt=""></li>
+                <li><img src="../data/item3.png" alt=""></li>
             </ul>
             <div class="txt">버튼을 누르면, 효과가 실행됩니다.</div>
         </article>
